@@ -176,6 +176,35 @@ Database should now contain available count = 0, i.e 0 coupons left
 _(Database verification showing the coupon’s available count reduced to zero after concurrent claim attempts)_
 <br/>
 <br/>
+## 👥 Multi-User Concurrency Testing
+To validate that the system remains consistent when multiple authenticated users attempt to claim the same coupon simultaneously, concurrency was tested using different JWT tokens, each representing a distinct user.
+### 1. Test Setup
+- Coupon availability: 3
+- Number of concurrent users created: 5
+
+### 2. Test command used
+```
+TOKENS=(
+  "JWT_USER_1"
+  "JWT_USER_2"
+  "JWT_USER_3"
+  "JWT_USER_4"
+  "JWT_USER_5"
+)
+
+for TOKEN in "${TOKENS[@]}"; do
+  curl -X POST http://127.0.0.1:8000/coupons/3/claim \
+  -H "token: $TOKEN" &
+done
+wait
+```
+
+### Concurrency Test Terminal Output:
+<img width="1605" height="611" alt="image" src="https://github.com/user-attachments/assets/a5e6a76e-5dda-42f2-8bd3-fadad385a6bd" />
+
+_(Parallel requests from multiple authenticated users attempting to claim the same coupon. With only 3 coupons available, exactly 3 requests succeeded while the remaining requests correctly returned “No coupons available.”)_
+<br />
+<br />
 ## 🧪 Error Handling Strategy
 - ```404``` → Coupon not found
 - ```409``` → No coupons available / concurrent update
