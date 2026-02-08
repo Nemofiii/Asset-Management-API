@@ -160,7 +160,7 @@ wait
 | Internal errors   | **0** |
 ```
 
-### Concurrency Test Terminal Output:
+### - Concurrency Test Terminal Output:
 
 <img width="1354" height="479" alt="image" src="https://github.com/user-attachments/assets/4d69f0e4-8037-4508-b55f-64f5e4346bb4" />
 
@@ -169,7 +169,7 @@ _(The image displays parallel requests attempting to claim the same coupon. With
 ### 4. Result
 Database should now contain available count = 0, i.e 0 coupons left
 
-### Database Verification:
+### - Database Verification:
 
 <img width="346" height="95" alt="image" src="https://github.com/user-attachments/assets/91f52c2f-1af4-4750-b9ae-9ba08abff1cc" />
 
@@ -199,7 +199,7 @@ done
 wait
 ```
 
-### Concurrency Test Terminal Output:
+### - Concurrency Test Terminal Output:
 <img width="1605" height="611" alt="image" src="https://github.com/user-attachments/assets/a5e6a76e-5dda-42f2-8bd3-fadad385a6bd" />
 
 _(Parallel requests from multiple authenticated users attempting to claim the same coupon. With only 3 coupons available, exactly 3 requests succeeded while the remaining requests correctly returned “No coupons available.”)_
@@ -209,8 +209,4 @@ _(Parallel requests from multiple authenticated users attempting to claim the sa
 - ```404``` → Coupon not found
 - ```409``` → No coupons available / concurrent update
 - ```401``` → Invalid or expired token
-<<<<<<< HEAD
 - ```403``` → Admin access required
-=======
-- ```403``` → Admin access required
->>>>>>> 77aed03c80dec7e5ff6d319c636e2b4686d47828
