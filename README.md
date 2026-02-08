@@ -90,6 +90,7 @@ Backend/
 | PUT    | `/admin/coupons/{coupon_id}` | Update coupon details |
 | DELETE | `/admin/coupons/{coupon_id}` | Delete a coupon       |
 
+<br />
 
 ## ⚙️ Setup Instructions
 ### 1️⃣ Create Virtual Environment
