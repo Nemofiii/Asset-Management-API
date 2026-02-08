@@ -73,6 +73,24 @@ Backend/
 - Passlib (bcrypt)
 <br/>
 
+## 📡 API Endpoints Overview
+### 1. 🎟️ User Endpoints
+| Method | Endpoint                     | Description                               |
+| ------ | ---------------------------- | ----------------------------------------- |
+| POST	 | `/register`	                | Register a new user                       |
+| POST	 | `/login`	                    | Authenticate user and return JWT          | 
+| GET    | `/coupons`                   | View all active coupons                   |
+| POST   | `/coupons/{coupon_id}/claim` | Claim a coupon (authenticated users only) |
+| GET    | `/users/me/history`          | View claim history for the logged-in user |
+
+### 2. 👑 Admin Endpoints
+| Method | Endpoint                     | Description           |
+| ------ | ---------------------------- | --------------------- |
+| POST   | `/admin/coupons`             | Create a new coupon   |
+| PUT    | `/admin/coupons/{coupon_id}` | Update coupon details |
+| DELETE | `/admin/coupons/{coupon_id}` | Delete a coupon       |
+
+<br />
 ## ⚙️ Setup Instructions
 ### 1️⃣ Create Virtual Environment
 ```
@@ -152,13 +170,11 @@ wait
 ```
 
 ### 3. Expected Result
-```
 | Outcome           | Count |
 | ----------------- | ----- |
 | Successful claims | 3     |
 | Failed (no stock) | 7     |
-| Internal errors   | **0** |
-```
+| Internal errors   | 0     |
 
 ### - Concurrency Test Terminal Output:
 
